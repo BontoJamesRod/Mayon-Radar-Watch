@@ -106,6 +106,14 @@ Then run `pytest`, commit `site/report/data/mayon/` and push. The script refuses
 - Julius Dave Fajardo
 - Hugh Benedict O. Abante
 
+## AI tools used
+
+| Tool | Model | Maker |
+| --- | --- | --- |
+| Claude Code (VS Code extension) | Claude Opus 5.5 | Anthropic |
+
+The town reports and the detection itself use no AI: they run on fixed rules and templates in the code.
+
 ## License and credits
 
 The code and documentation are under the [Apache-2.0 license](LICENSE), with the copyright notice in [NOTICE](NOTICE). The published radar layers in `site/data/sites/mayon/pairs/` are under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), and those in `site/data/sites/panama/pairs/` are under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Credit them to Mayon Radar Watch and NASA–ISRO NISAR data via ASF, adding geoBoundaries for Panama. Data files under their own licenses, such as ODbL and CC BY-SA 4.0, aren't covered by the code license. [CREDITS.md](CREDITS.md) lists every data source, library and tool with its license, and says which files fall under which terms.
