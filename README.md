@@ -106,6 +106,19 @@ Then run `pytest`, commit `site/report/data/mayon/` and push. The script refuses
 - Julius Dave Fajardo
 - Hugh Benedict O. Abante
 
+## Apps and tools used
+
+| What for | Apps and tools |
+| --- | --- |
+| Writing the code | Visual Studio Code, Python 3.12, PowerShell on Windows |
+| Code hosting and the live site | Git, GitHub, GitHub Actions, GitHub Pages |
+| The map and the 3D view | Leaflet, MapLibre GL JS |
+| Processing the data | NumPy, SciPy, xarray, h5py, rasterio, Shapely, pyproj, Pillow, Matplotlib |
+| Finding the radar data | ASF (asf_search), NASA Earthdata (earthaccess) |
+| Checking the channel lines | Google Earth Pro, OpenStreetMap |
+| Testing | pytest, Playwright with Chromium, axe-core |
+| Fonts | IBM Plex Sans, EB Garamond (through Fontsource) |
+
 ## AI tools used
 
 All by Anthropic.
