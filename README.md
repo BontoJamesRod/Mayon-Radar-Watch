@@ -108,10 +108,10 @@ Then run `pytest`, commit `site/report/data/mayon/` and push. The script refuses
 
 ## AI tools used
 
-| Tool | Model | Maker |
-| --- | --- | --- |
-| Claude Code (VS Code extension) | Claude Opus 5.5 | Anthropic |
-| Claude | Claude Fable 5.2 | Anthropic |
+All by Anthropic.
+
+- **Apps:** Claude Code (VS Code extension), Claude Cowork, Claude.ai and Claude Desktop
+- **Models:** Claude Opus 5.5 and Claude Fable 5.2
 
 The town reports and the detection itself use no AI: they run on fixed rules and templates in the code.
 
