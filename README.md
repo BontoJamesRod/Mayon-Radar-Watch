@@ -1,8 +1,22 @@
 # Mayon Radar Watch
 
-A web app that watches how Mayon Volcano's river channels change between NISAR radar satellite passes. It compares radar images from the same track, usually 12 days apart, and maps where fresh ash, rock and lava may have landed. A channel timeline ranks the channels that the owner has confirmed by how much changed since the last pass. Two pairs in Panama show the same engine on another continent. Built for the NASA Space Apps Challenge 2026, "Dancing with the SARs".
+A web app that watches how Mayon Volcano's river channels change between NISAR radar satellite passes. It compares radar images from the same track, usually 12 days apart, and maps where fresh ash, rock and lava may have landed. A channel timeline ranks the channels the owner has confirmed by how much they changed since the last pass. Two pairs from Panama run the same engine on another continent. Built for the NASA Space Apps Challenge 2026, "Dancing with the SARs".
 
 **This is not an official warning service. Follow PHIVOLCS and your LGU.**
+
+## Live site
+
+**https://bontojamesrod.github.io/Mayon-Radar-Watch/**
+
+| Page | Link |
+| --- | --- |
+| Map and channel timeline, Mayon | https://bontojamesrod.github.io/Mayon-Radar-Watch/ |
+| 3D view, Mayon | https://bontojamesrod.github.io/Mayon-Radar-Watch/3d.html |
+| Town reports, Mayon | https://bontojamesrod.github.io/Mayon-Radar-Watch/report.html |
+| Map, Panama test site | https://bontojamesrod.github.io/Mayon-Radar-Watch/?site=panama |
+| 3D view, Panama test site | https://bontojamesrod.github.io/Mayon-Radar-Watch/3d.html?site=panama |
+
+The site runs entirely in the browser. No sign-in is needed.
 
 ## How it works
 
@@ -13,7 +27,7 @@ A Python pipeline compares two NISAR passes from the same track, 12 days or more
 
 Brightness change alone flags a spot. Coherence loss only raises a flagged spot to high confidence, and it never adds area. The pipeline writes small files into `site/data/`, and the website reads them in the visitor's browser. There is no server.
 
-The detection thresholds are final, and were set before any post-eruption pass was opened. The NISAR products are still PROVISIONAL.
+The detection thresholds are final. They were set before any post-eruption pass was opened. The NISAR products are still labeled provisional.
 
 ## What's on the site
 
@@ -34,7 +48,7 @@ Channel lines come from OpenStreetMap, © OpenStreetMap contributors. The projec
 | `pipeline/context/` | Source files for boundaries, events and validation sheets |
 | `pipeline/reports/` | Scripts and results behind the thresholds and the channel checks |
 | `pipeline/tests/` | Unit and browser tests |
-| `site/` | The public website, deployed to GitHub Pages |
+| `site/` | The public website, deployed to GitHub Pages at <https://bontojamesrod.github.io/Mayon-Radar-Watch/> |
 
 These folders are made on your computer and never committed: `raw/` (cropped NISAR data), `pipeline/out/` (processed pairs and draft town sheets) and `pipeline/logs/`.
 
@@ -54,7 +68,7 @@ Step 5 asks for your NASA Earthdata login the first time and saves it in your ho
 python -m http.server 8000 --directory site
 ```
 
-Then open <http://localhost:8000>.
+Then open <http://localhost:8000>. The public copy is at <https://bontojamesrod.github.io/Mayon-Radar-Watch/>.
 
 ## Run the pipeline
 
@@ -76,9 +90,9 @@ python pipeline/mrw/validation.py mayon <pair id> --publish
 python pipeline/mrw/contract_check.py
 ```
 
-Publishing only changes files on your computer. A pair reaches the public site when `main` is pushed and CI passes.
+Publishing only changes files on your computer. A pair reaches the [public site](https://bontojamesrod.github.io/Mayon-Radar-Watch/) when `main` is pushed and CI passes.
 
-The pipeline refuses every product acquired on or after `BLIND_CUTOFF` in `pipeline/mrw/search.py`. It kept the eruption data closed until the final thresholds were set, so the thresholds couldn't be influenced by it. Only the owner moves it.
+The pipeline refuses every product acquired on or after `BLIND_CUTOFF` in `pipeline/mrw/search.py`. It kept the eruption data closed until the final thresholds were set, so that data couldn't influence them. Only the owner moves it.
 
 ### Town reports: draft, review, approve
 
@@ -126,7 +140,7 @@ All by Anthropic.
 - **Apps:** Claude Code (VS Code extension), Claude Cowork, Claude.ai and Claude Desktop
 - **Models:** Claude Opus 5.5 and Claude Fable 5.2
 
-The town reports and the detection itself use no AI: they run on fixed rules and templates in the code.
+The town reports and the detection itself use no AI. They run on fixed rules and templates in the code.
 
 ## License and credits
 
