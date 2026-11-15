@@ -1,0 +1,26 @@
+# Finding and downloading NISAR data
+asf_search
+earthaccess
+fsspec
+aiohttp
+
+# Reading and processing the products
+h5py
+xarray
+h5netcdf
+numpy
+scipy
+rasterio
+requests
+pyproj
+shapely
+tzdata
+
+# Making the web images
+Pillow
+matplotlib
+
+# Testing and notebooks in VS Code
+pytest
+pytest-playwright
+ipykernel

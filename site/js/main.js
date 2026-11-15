@@ -1,0 +1,334 @@
+// Starts the app and connects its parts: load the site list, then the site the address
+// names (Mayon unless it says ?site=panama), then its latest pair. Opening another site loads
+// it before removing the old one, so the previous site stays on screen if loading fails (FR-042).
+
+import { createChannels } from "./channels.js";
+import { createCompare } from "./compare.js";
+import { loadPair, loadSiteData, loadSites } from "./data.js";
+import { createDrawer } from "./drawer.js";
+import { createHistogram } from "./histogram.js";
+import { createChannelLayer, createNewMaterialLayer, showChannelLegend } from "./layers.js";
+import { createMap, RADAR_PANE, showStartView } from "./map.js";
+import { createPanel, fillCheck, fillHelp, fillSources } from "./panels.js";
+import { setUpInfos } from "./popover.js";
+import { createReadout } from "./readout.js";
+import { createSearch } from "./search.js";
+import { applyPageStrings, STRINGS, textFor } from "./strings.js";
+import { createTimeline } from "./timeline.js";
+
+const byId = (id) => document.getElementById(id);
+
+// Panama is a test of the method, reached from "How we checked this", not a site to pick (FR-099).
+const TEST_SITE = "panama";
+
+// Every script has loaded and run, so errors from here on are handled by the app (see index.html).
+window.appStarted = true;
+
+// What is on screen now.
+const app = { sites: [], site: null, map: null, pair: null, compare: null, channels: null, drawer: null, histogram: null, openRequest: 0 };
+
+function showError(text, retry) {
+  byId("app-message").textContent = text;
+  byId("app-retry").hidden = false;
+  byId("app-retry").onclick = retry;
+  byId("loading").hidden = true;
+}
+
+function clearMessage() {
+  byId("app-message").textContent = "";
+  byId("app-retry").hidden = true;
+}
+
+function setUpCompare(map, site) {
+  return createCompare(map, {
+    view: byId("compare-view"),
+    divider: byId("compare-divider"),
+    beforeLabel: byId("compare-before"),
+    afterLabel: byId("compare-after"),
+    close: byId("compare-close"),
+    message: byId("compare-message"),
+  }, site, (hidden) => {
+    map.getPane(RADAR_PANE).style.display = hidden ? "none" : "";
+  });
+}
+
+function setUpSearch(map, site, siteData, readout) {
+  const search = createSearch({
+    panel: byId("search-panel"),
+    form: byId("search-form"),
+    input: byId("search-input"),
+    suggestions: byId("search-suggestions"),
+    message: byId("search-message"),
+    close: byId("search-close"),
+  }, siteData.towns, (town) => {
+    const { label_lat: lat, label_lon: lon, name } = town.properties;
+    map.setView([lat, lon], Math.max(map.getZoom(), site.default_zoom), { animate: false });
+    readout.open(lat, lon, name);
+  });
+  byId("search-button").onclick = search.open;
+}
+
+// Draw the site's channels, or say why there are none. A tap on a line opens the card for that spot.
+function setUpChannelLayer(map, siteData, readout) {
+  const elements = {
+    legend: byId("channel-legend"),
+    layer: byId("channel-layer"),
+    toggle: byId("channel-toggle"),
+    note: byId("channel-note"),
+    count: byId("channel-count"),
+    unavailable: byId("channels-unavailable"),
+  };
+  if (siteData.channels && siteData.channels.features.length) {
+    createChannelLayer(map, elements, siteData.channels, (channel, latlng) => {
+      readout.open(latlng.lat, latlng.lng, undefined, channel);
+    });
+  } else {
+    showChannelLegend(elements, siteData.channelsFailed ? "unavailable" : "none");
+  }
+}
+
+// The channel card shows only for a site with channel data (US-024/AC-2, FR-094).
+function setUpChannels(map, site, siteData) {
+  const hasChannels = site.channel_strip_half_width_m != null;
+  byId("channel-panel").hidden = true;
+  app.channels = !hasChannels ? null : createChannels(map, {
+    host: byId("panel"),
+    panel: byId("channel-panel"),
+    title: byId("channel-title"),
+    back: byId("channel-back"),
+    info: byId("channel-info"),
+    lead: byId("channel-lead"),
+    how: byId("channel-how"),
+    headMore: byId("channel-head-more"),
+    status: byId("channel-status"),
+    retry: byId("channel-retry"),
+    body: byId("channel-body"),
+    previous: byId("previous"),
+    next: byId("next"),
+  }, site, siteData, () => map.invalidateSize({ animate: false }), (pairId) => {
+    const list = byId("pair-list");
+    list.value = pairId;
+    list.dispatchEvent(new Event("change"));
+  }, (channel) => {
+    if (app.histogram) app.histogram.setChannel(channel);
+    // On a phone a channel's page opens in the closed sheet, so the map keeps its room for the strip.
+    if (channel) app.drawer.close();
+  });
+}
+
+// Connect the pair list, map layer, readout and compare view for the site on screen.
+function setUpPairs(map, site, siteData, readout) {
+  if (siteData.pairs.length === 0) {
+    byId("app-message").textContent = STRINGS.noPairs;
+    byId("panel").hidden = true;
+    return Promise.resolve();
+  }
+  byId("panel").hidden = false;
+  // Showing the panel made the map shorter, and Leaflet only notices that when told.
+  map.invalidateSize({ pan: false });
+  showStartView(map, site);
+  const showPair = createNewMaterialLayer(map, {
+    toggle: byId("layer-toggle"),
+    title: byId("legend-title"),
+    rows: byId("legend-rows"),
+    full: byId("legend-full"),
+    noColor: byId("legend-no-color"),
+    area: byId("legend-area"),
+    caption: byId("area-caption"),
+    courts: byId("area-courts"),
+    areaMore: byId("legend-area-more"),
+    bar: byId("confidence-bar"),
+    key: byId("confidence-key"),
+    summary: byId("summary"),
+  }, site);
+  // There is nothing to compare until the first pair has loaded.
+  byId("compare-button").disabled = true;
+  byId("compare-button").onclick = async () => {
+    await app.compare.open(app.pair);
+    // On a phone the images need the room. An error stays readable in the open drawer.
+    if (!byId("compare-view").hidden) app.drawer.close();
+  };
+  const siteIsShown = () => app.site === site;
+  app.histogram = createHistogram({
+    chart: byId("histogram-chart"),
+    share: byId("histogram-share"),
+    sentence: byId("histogram-sentence"),
+    note: byId("histogram-note"),
+  }, site);
+  return createTimeline({
+    list: byId("pair-list"),
+    label: byId("pair-label"),
+    sub: byId("pair-sub"),
+    detail: byId("pair-detail"),
+    events: byId("pair-events"),
+    gap: byId("pair-gap"),
+    previous: byId("previous"),
+    next: byId("next"),
+    message: byId("timeline-message"),
+    retry: byId("timeline-retry"),
+  }, site, siteData.pairs, siteData.events, siteIsShown, async (summary, isCurrent) => {
+    try {
+      const pair = await loadPair(site.id, summary.id);
+      if (!isCurrent()) return;
+      await showPair(pair, isCurrent);
+      if (!isCurrent()) return;
+      app.pair = pair;
+      app.compare.pairChanged(pair);
+      if (app.channels) app.channels.pairChanged(pair);
+      byId("compare-button").disabled = false;
+      readout.setPair(pair);
+      await app.histogram.show(pair);
+      if (!isCurrent()) return;
+      // The legend has just filled in, so the panel may have grown and the map shrunk. Leaflet
+      // only notices when told, and otherwise the map jumps at some later moment.
+      map.invalidateSize({ animate: false });
+    } catch (problem) {
+      if (app.channels && isCurrent()) app.channels.pairFailed();
+      throw problem;
+    }
+  });
+}
+
+// Replace what is on screen with an already loaded site.
+async function showSite(site, siteData) {
+  clearMessage();
+  byId("readout-card").hidden = true;
+  byId("search-panel").hidden = true;
+  if (app.compare) app.compare.close();
+  if (app.channels) app.channels.close();
+  if (app.map) app.map.remove();
+  app.map = null;
+  app.pair = null;
+  app.site = site;
+  byId("site-name").textContent = site.name;
+  // The first site in the list is the app's own; any other is a test site with a banner.
+  byId("test-banner").hidden = site === app.sites[0];
+  // The same site's 3D view: Mayon, or the Panama test site at ?site=panama (FR-107, FR-108).
+  byId("view-3d").href = site === app.sites[0] ? "3d.html" : `3d.html?site=${site.id}`;
+  byId("view-3d").hidden = false;
+  // The town reports cover Mayon's towns only (FR-114).
+  byId("town-reports").hidden = site !== app.sites[0];
+  document.querySelector(".disclaimer").textContent = textFor(site).disclaimer;
+  byId("disclaimer-short").textContent = textFor(site).disclaimerShort;
+  // The ring is always on the map, so its row in Layers has no switch (FR-094).
+  byId("zone-row").hidden = !site.danger_zone_label;
+  byId("zone-name").textContent = site.danger_zone_label || "";
+  const channelCount = siteData.channels ? siteData.channels.features.length : 0;
+  byId("show-all").textContent = channelCount ? STRINGS.showAll(channelCount) : STRINGS.showMore;
+  app.drawer.siteChanged();
+  const map = createMap(site, siteData, byId("background-notice"));
+  app.map = map;
+  app.compare = setUpCompare(map, site);
+  const readout = createReadout({
+    card: byId("readout-card"),
+    body: byId("readout-body"),
+    close: byId("readout-close"),
+    retry: byId("readout-retry"),
+  }, site, siteData.towns, siteData.channels);
+  map.on("click", (event) => readout.open(event.latlng.lat, event.latlng.lng));
+  setUpChannelLayer(map, siteData, readout);
+  setUpChannels(map, site, siteData);
+  // Before the pairs, because the map's start view has to fit the room the list leaves it.
+  if (app.channels) app.channels.showAtStart();
+  setUpSearch(map, site, siteData, readout);
+  await setUpPairs(map, site, siteData, readout);
+  byId("loading").hidden = true;
+}
+
+// Load a site first, and only then touch the screen. `onShown` runs once the site is on screen.
+async function openSite(site, onShown = () => {}) {
+  clearMessage();
+  byId("loading").hidden = false;
+  app.openRequest += 1;
+  const thisRequest = app.openRequest; // only the site picked last may open
+  let siteData;
+  try {
+    siteData = await loadSiteData(site);
+    if (thisRequest !== app.openRequest) return;
+  } catch (problem) {
+    if (thisRequest !== app.openRequest) return;
+    console.error(problem.message);
+    showError(STRINGS.siteLoadError(site.name), () => openSite(site, onShown));
+    return;
+  }
+  try {
+    await showSite(site, siteData);
+    if (thisRequest === app.openRequest) onShown();
+  } catch (problem) {
+    // Bad data can break the map itself, and the visitor still needs a way to try again.
+    console.error(problem);
+    showError(STRINGS.siteLoadError(site.name), () => openSite(site, onShown));
+  }
+}
+
+// The site the address names, or the app's own site when it names none we know.
+function siteFromAddress() {
+  const id = new URLSearchParams(location.search).get("site");
+  return app.sites.find((site) => site.id === id) || app.sites[0];
+}
+
+// Open a site and, once it shows, give it its own address so Back and a shared link work.
+function goToSite(site, address) {
+  openSite(site, () => history.pushState(null, "", address));
+}
+
+// The "Tested in Panama" section, shown on the app's own site only (FR-100).
+function panamaTest() {
+  const test = app.sites.find((site) => site.id === TEST_SITE);
+  if (!test || app.site !== app.sites[0]) return null;
+  return {
+    site: test,
+    open: () => {
+      byId("check-panel").close();
+      goToSite(test, `?site=${test.id}`);
+    },
+  };
+}
+
+function setUpPanels() {
+  app.drawer = createDrawer(byId("panel"), byId("drawer-toggle"), () => {
+    if (app.map) app.map.invalidateSize({ animate: false });
+  }, () => app.site);
+  const help = createPanel(byId("help-panel"), (body) => fillHelp(body, () => app.pair, app.site));
+  const sources = createPanel(byId("sources-panel"), (body) => fillSources(body, () => app.pair, app.site));
+  const check = createPanel(byId("check-panel"), (body) => fillCheck(body, () => app.pair, panamaTest()));
+  byId("help-button").onclick = help;
+  byId("show-all").onclick = () => app.drawer.open();
+  // The open sheet's links do what the buttons they name do.
+  document.querySelectorAll("[data-click]").forEach((button) => {
+    button.onclick = () => byId(button.dataset.click).click();
+  });
+  byId("check-button").onclick = () => app.site && check();
+  byId("sources-button").onclick = () => app.site && sources();
+  byId("test-back").onclick = (event) => {
+    event.preventDefault();
+    goToSite(app.sites[0], byId("test-back").href);
+  };
+  // Back and Forward change the address; open the site it names.
+  window.addEventListener("popstate", () => {
+    const site = siteFromAddress();
+    if (app.sites.length && site !== app.site) openSite(site);
+  });
+}
+
+async function start() {
+  clearMessage();
+  byId("loading").hidden = false;
+  try {
+    app.sites = await loadSites();
+    if (app.sites.length === 0) throw new Error("The site list is empty");
+  } catch (problem) {
+    console.error(problem.message);
+    showError(STRINGS.siteListError, start);
+    return;
+  }
+  await openSite(siteFromAddress());
+}
+
+// Without Leaflet there's no map to open, and index.html has already said so.
+if (typeof L !== "undefined") {
+  applyPageStrings();
+  setUpInfos();
+  setUpPanels();
+  start();
+}

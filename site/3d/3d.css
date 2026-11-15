@@ -1,0 +1,235 @@
+/* Task T-149: the 3D view (F-25, SCR-15). The same colours and font as the 2D map's calm design. */
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-display: swap; src: url("../vendor/ibm-plex-5.3.0/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 600; font-display: swap; src: url("../vendor/ibm-plex-5.3.0/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); }
+
+:root {
+  --ground: #faf9f7;
+  --surface: #ffffff;
+  --line: #e7e3dc;
+  --line-strong: #cfc8bc;
+  --ink: #1c1b19;
+  --ink-2: #5f5b55;
+  --accent: #1f5a8c;
+  --accent-soft: #eaf1f8;
+  --warn-bg: #fdf3e4;
+  --warn-ink: #7a4510;
+  --shadow-float: 0 2px 10px rgba(28, 27, 25, 0.12), 0 1px 2px rgba(28, 27, 25, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--ground);
+}
+
+body { display: flex; flex-direction: column; }
+
+.hidden-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* The top bar: the app's name, the view, the disclaimer and the way back to the 2D map. */
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.title { flex: 1 1 auto; margin: 0; font-size: 15px; font-weight: 600; }
+.view-name { color: var(--ink-2); font-weight: 400; }
+
+.disclaimer-tag {
+  margin: 0;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--warn-ink);
+  background: var(--warn-bg);
+  border-radius: 999px;
+}
+
+.back-link, .problem a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  font-weight: 600;
+  color: var(--accent);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+/* FR-108: the Panama test site's banner, as on the 2D map (FR-099). */
+.test-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 12px;
+  padding: 0 16px;
+  font-size: 14px;
+  color: #1f4a70;
+  background: var(--accent-soft);
+}
+
+.test-banner[hidden] { display: none; }
+.test-back { display: inline-flex; align-items: center; min-height: 32px; font-weight: 600; color: #1f4a70; }
+
+.map-area { position: relative; flex: 1 1 auto; min-height: 0; }
+#map { position: absolute; inset: 0; }
+
+.notice {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-float);
+  z-index: 5;
+}
+
+.problem { max-width: min(420px, calc(100% - 32px)); text-align: center; }
+.problem p { margin: 0 0 12px; }
+
+/* Cards float over the map. */
+.card {
+  position: absolute;
+  z-index: 2;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-float);
+}
+
+.pass-card { top: 12px; left: 12px; width: 320px; }
+.pass-row { display: flex; align-items: center; gap: 6px; }
+
+.pair-list {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 8px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+}
+
+.pair-label { margin: 8px 0 0; font-size: 18px; font-weight: 600; }
+.pair-sub, .pair-gap, .pair-message, .help-line { margin: 4px 0 0; font-size: 13px; color: var(--ink-2); }
+.pair-gap:empty, .pair-message:empty { display: none; }
+
+.icon-button, .text-button, .segment {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.icon-button { padding: 0; font-size: 22px; line-height: 1; }
+.icon-button:disabled { color: var(--line-strong); cursor: default; }
+.text-button[aria-pressed="true"], .segment[aria-pressed="true"] { color: var(--surface); background: var(--accent); border-color: var(--accent); }
+
+:is(button, a, select):focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.controls {
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  max-width: 420px;
+}
+
+.basemap { display: flex; }
+.basemap .segment:first-child { border-radius: 8px 0 0 8px; }
+.basemap .segment:last-child { border-radius: 0 8px 8px 0; margin-left: -1px; }
+.controls .help-line { flex-basis: 100%; }
+
+/* The NISAR label stays above the map credits at the bottom right (FR-084). */
+.maplibregl-ctrl.product-label {
+  max-width: calc(100vw - 20px);
+  margin: 0 10px 4px 0;
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: right;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+.product-label:empty { display: none; }
+
+/* Credits, in full: EOX asks for its imagery credit to stay clearly visible. */
+/* On a desktop they stay right of the controls card, which is at most 420 px wide. */
+.maplibregl-ctrl-attrib { font-size: 11px; max-width: calc(100vw - 460px); }
+.maplibregl-ctrl-attrib a { color: #1f4a70; }
+
+/* Names on the ground. A light halo keeps them readable on relief and imagery. */
+.label-3d {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  color: #1c1b19;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 2px #fff;
+}
+
+.channel-label-3d { color: #0b4f62; font-style: italic; }
+.zone-label-3d { color: #8a3206; font-size: 12px; }
+
+/* A phone: the map first, the pass card on top, the controls at the bottom. */
+@media (max-width: 700px) {
+  .test-banner { flex-wrap: nowrap; padding: 0 12px; font-size: 13px; line-height: 1.3; }
+  .test-back { flex: none; min-height: 44px; white-space: nowrap; }
+  .bar { padding: 6px 12px; gap: 6px 10px; }
+  .brand-name { display: none; }
+  /* The title shortens with "…" so the way back to the 2D map stays on the same row. */
+  .title { flex: 1 1 0; min-width: 0; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .back-link { flex: none; }
+  .disclaimer-tag { order: 5; flex: 1 1 100%; font-size: 12px; text-align: center; }
+  .pass-card { top: 8px; left: 8px; right: 8px; width: auto; padding: 8px 10px; }
+  .pass-card .help-line { display: none; }
+  .pair-label { margin-top: 4px; font-size: 16px; }
+  /* One row of controls, so the credits and the NISAR label can sit right above it. */
+  .controls { left: 8px; right: 8px; bottom: 8px; max-width: none; padding: 6px; gap: 6px; flex-wrap: nowrap; }
+  .controls .text-button, .controls .segment { padding: 0 8px; font-size: 13px; }
+  .controls .help-line { position: absolute; bottom: 100%; left: 0; right: 0; padding: 6px; background: var(--surface); border-radius: 8px; }
+  .maplibregl-ctrl-top-right { top: 136px; }
+  .maplibregl-ctrl-bottom-right { bottom: 72px; }
+  .maplibregl-ctrl-attrib { max-width: calc(100vw - 16px); font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}

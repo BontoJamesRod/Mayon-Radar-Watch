@@ -1,0 +1,13 @@
+town_id,town_name,possible_km2,likely_km2,flagged_km2,no_data_km2,checked_share
+mayon_bacacay,Bacacay,0.061,0.004,0.065,0.0,0.387
+mayon_camalig,Camalig,0.108,0.004,0.112,0.005,0.576
+mayon_daraga,Daraga,0.09,0.003,0.093,0.002,0.584
+mayon_guinobatan,Guinobatan,0.082,0.009,0.091,0.003,0.432
+mayon_legazpi_city,Legazpi City,0.023,0.002,0.025,0.0,0.613
+mayon_ligao_city,Ligao City,0.097,0.01,0.107,0.074,0.449
+mayon_malilipot,Malilipot,0.093,0.02,0.113,0.002,0.954
+mayon_malinao,Malinao,0.0,0.0,0.0,0.0,0.025
+mayon_oas,Oas,0.0,0.0,0.0,0.069,0.0
+mayon_polangui,Polangui,0.0,0.0,0.0,0.0,0.0
+mayon_santo_domingo,Santo Domingo,0.145,0.013,0.158,0.0,0.833
+mayon_tabaco_city,Tabaco City,0.071,0.011,0.083,0.027,0.622

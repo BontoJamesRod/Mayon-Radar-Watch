@@ -1,0 +1,451 @@
+{
+ "data": [
+  {
+   "town_id": "mayon_malilipot",
+   "town_name": "Malilipot",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 0.0,
+   "checked_share": 0.954,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.095,
+    "mayon_A111F008_20260703_20260715": 0.111,
+    "mayon_A111F008_20260715_20260727": 0.188,
+    "mayon_A111F008_20260727_20260820": 0.366,
+    "mayon_A111F008_20260820_20260901": 0.106,
+    "mayon_A111F008_20260901_20260913": 0.102,
+    "mayon_D104F082_20260913_20260925": 0.063,
+    "mayon_A111F008_20260913_20260925": 0.102,
+    "mayon_A111F008_20260925_20261007": 0.113,
+    "mayon_D104F082_20261007_20261019": 0.179,
+    "mayon_A111F008_20261007_20261019": 0.098,
+    "mayon_D104F082_20261019_20261031": 0.073,
+    "mayon_A111F008_20261019_20261031": 0.07
+   }
+  },
+  {
+   "town_id": "mayon_tabaco_city",
+   "town_name": "Tabaco City",
+   "town_kind": "city",
+   "nearest_km_to_summit": 0.04,
+   "checked_share": 0.622,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.153,
+    "mayon_A111F008_20260703_20260715": 0.18,
+    "mayon_A111F008_20260715_20260727": 0.247,
+    "mayon_A111F008_20260727_20260820": 0.515,
+    "mayon_A111F008_20260820_20260901": 0.139,
+    "mayon_A111F008_20260901_20260913": 0.11,
+    "mayon_D104F082_20260913_20260925": 0.041,
+    "mayon_A111F008_20260913_20260925": 0.05,
+    "mayon_A111F008_20260925_20261007": 0.083,
+    "mayon_D104F082_20261007_20261019": 0.162,
+    "mayon_A111F008_20261007_20261019": 0.057,
+    "mayon_D104F082_20261019_20261031": 0.061,
+    "mayon_A111F008_20261019_20261031": 0.052
+   }
+  },
+  {
+   "town_id": "mayon_santo_domingo",
+   "town_name": "Santo Domingo",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 0.25,
+   "checked_share": 0.833,
+   "channel_names": [
+    "Basud",
+    "Lidong",
+    "Padang"
+   ],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.202,
+    "mayon_A111F008_20260703_20260715": 0.167,
+    "mayon_A111F008_20260715_20260727": 0.15,
+    "mayon_A111F008_20260727_20260820": 0.387,
+    "mayon_A111F008_20260820_20260901": 0.098,
+    "mayon_A111F008_20260901_20260913": 0.108,
+    "mayon_D104F082_20260913_20260925": 0.16,
+    "mayon_A111F008_20260913_20260925": 0.099,
+    "mayon_A111F008_20260925_20261007": 0.158,
+    "mayon_D104F082_20261007_20261019": 0.228,
+    "mayon_A111F008_20261007_20261019": 0.065,
+    "mayon_D104F082_20261019_20261031": 0.133,
+    "mayon_A111F008_20261019_20261031": 0.121
+   }
+  },
+  {
+   "town_id": "mayon_ligao_city",
+   "town_name": "Ligao City",
+   "town_kind": "city",
+   "nearest_km_to_summit": 0.47,
+   "checked_share": 0.449,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.358,
+    "mayon_A111F008_20260703_20260715": 0.334,
+    "mayon_A111F008_20260715_20260727": 0.353,
+    "mayon_A111F008_20260727_20260820": 0.613,
+    "mayon_A111F008_20260820_20260901": 0.214,
+    "mayon_A111F008_20260901_20260913": 0.245,
+    "mayon_D104F082_20260913_20260925": 0.112,
+    "mayon_A111F008_20260913_20260925": 0.105,
+    "mayon_A111F008_20260925_20261007": 0.107,
+    "mayon_D104F082_20261007_20261019": 0.21,
+    "mayon_A111F008_20261007_20261019": 0.111,
+    "mayon_D104F082_20261019_20261031": 0.1,
+    "mayon_A111F008_20261019_20261031": 0.113
+   }
+  },
+  {
+   "town_id": "mayon_camalig",
+   "town_name": "Camalig",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 0.49,
+   "checked_share": 0.576,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.393,
+    "mayon_A111F008_20260703_20260715": 0.312,
+    "mayon_A111F008_20260715_20260727": 0.238,
+    "mayon_A111F008_20260727_20260820": 0.421,
+    "mayon_A111F008_20260820_20260901": 0.144,
+    "mayon_A111F008_20260901_20260913": 0.222,
+    "mayon_D104F082_20260913_20260925": 0.144,
+    "mayon_A111F008_20260913_20260925": 0.097,
+    "mayon_A111F008_20260925_20261007": 0.112,
+    "mayon_D104F082_20261007_20261019": 0.352,
+    "mayon_A111F008_20261007_20261019": 0.094,
+    "mayon_D104F082_20261019_20261031": 0.211,
+    "mayon_A111F008_20261019_20261031": 0.103
+   }
+  },
+  {
+   "town_id": "mayon_daraga",
+   "town_name": "Daraga",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 0.49,
+   "checked_share": 0.584,
+   "channel_names": [
+    "Mi-isi"
+   ],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.341,
+    "mayon_A111F008_20260703_20260715": 0.209,
+    "mayon_A111F008_20260715_20260727": 0.202,
+    "mayon_A111F008_20260727_20260820": 0.337,
+    "mayon_A111F008_20260820_20260901": 0.141,
+    "mayon_A111F008_20260901_20260913": 0.132,
+    "mayon_D104F082_20260913_20260925": 0.11,
+    "mayon_A111F008_20260913_20260925": 0.135,
+    "mayon_A111F008_20260925_20261007": 0.093,
+    "mayon_D104F082_20261007_20261019": 0.211,
+    "mayon_A111F008_20261007_20261019": 0.128,
+    "mayon_D104F082_20261019_20261031": 0.117,
+    "mayon_A111F008_20261019_20261031": 0.146
+   }
+  },
+  {
+   "town_id": "mayon_guinobatan",
+   "town_name": "Guinobatan",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 0.49,
+   "checked_share": 0.432,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.656,
+    "mayon_A111F008_20260703_20260715": 0.274,
+    "mayon_A111F008_20260715_20260727": 0.219,
+    "mayon_A111F008_20260727_20260820": 0.928,
+    "mayon_A111F008_20260820_20260901": 0.216,
+    "mayon_A111F008_20260901_20260913": 0.199,
+    "mayon_D104F082_20260913_20260925": 0.085,
+    "mayon_A111F008_20260913_20260925": 0.098,
+    "mayon_A111F008_20260925_20261007": 0.091,
+    "mayon_D104F082_20261007_20261019": 0.126,
+    "mayon_A111F008_20261007_20261019": 0.125,
+    "mayon_D104F082_20261019_20261031": 0.082,
+    "mayon_A111F008_20261019_20261031": 0.098
+   }
+  },
+  {
+   "town_id": "mayon_legazpi_city",
+   "town_name": "Legazpi City",
+   "town_kind": "city",
+   "nearest_km_to_summit": 0.49,
+   "checked_share": 0.613,
+   "channel_names": [
+    "Mi-isi",
+    "Padang"
+   ],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.149,
+    "mayon_A111F008_20260703_20260715": 0.135,
+    "mayon_A111F008_20260715_20260727": 0.092,
+    "mayon_A111F008_20260727_20260820": 0.257,
+    "mayon_A111F008_20260820_20260901": 0.034,
+    "mayon_A111F008_20260901_20260913": 0.078,
+    "mayon_D104F082_20260913_20260925": 0.084,
+    "mayon_A111F008_20260913_20260925": 0.062,
+    "mayon_A111F008_20260925_20261007": 0.025,
+    "mayon_D104F082_20261007_20261019": 0.137,
+    "mayon_A111F008_20261007_20261019": 0.039,
+    "mayon_D104F082_20261019_20261031": 0.062,
+    "mayon_A111F008_20261019_20261031": 0.074
+   }
+  },
+  {
+   "town_id": "mayon_bacacay",
+   "town_name": "Bacacay",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 1.0,
+   "checked_share": 0.387,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.043,
+    "mayon_A111F008_20260703_20260715": 0.051,
+    "mayon_A111F008_20260715_20260727": 0.043,
+    "mayon_A111F008_20260727_20260820": 0.24,
+    "mayon_A111F008_20260820_20260901": 0.06,
+    "mayon_A111F008_20260901_20260913": 0.038,
+    "mayon_D104F082_20260913_20260925": 0.027,
+    "mayon_A111F008_20260913_20260925": 0.02,
+    "mayon_A111F008_20260925_20261007": 0.065,
+    "mayon_D104F082_20261007_20261019": 0.034,
+    "mayon_A111F008_20261007_20261019": 0.013,
+    "mayon_D104F082_20261019_20261031": 0.027,
+    "mayon_A111F008_20261019_20261031": 0.014
+   }
+  },
+  {
+   "town_id": "mayon_malinao",
+   "town_name": "Malinao",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 9.28,
+   "checked_share": 0.025,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.001,
+    "mayon_A111F008_20260703_20260715": 0.002,
+    "mayon_A111F008_20260715_20260727": 0.001,
+    "mayon_A111F008_20260727_20260820": 0.001,
+    "mayon_A111F008_20260820_20260901": 0.0,
+    "mayon_A111F008_20260901_20260913": 0.0,
+    "mayon_D104F082_20260913_20260925": 0.001,
+    "mayon_A111F008_20260913_20260925": 0.0,
+    "mayon_A111F008_20260925_20261007": 0.0,
+    "mayon_D104F082_20261007_20261019": 0.01,
+    "mayon_A111F008_20261007_20261019": 0.009,
+    "mayon_D104F082_20261019_20261031": 0.001,
+    "mayon_A111F008_20261019_20261031": 0.003
+   }
+  },
+  {
+   "town_id": "mayon_oas",
+   "town_name": "Oas",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 11.39,
+   "checked_share": 0.0,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.0,
+    "mayon_A111F008_20260703_20260715": 0.0,
+    "mayon_A111F008_20260715_20260727": 0.0,
+    "mayon_A111F008_20260727_20260820": 0.0,
+    "mayon_A111F008_20260820_20260901": 0.0,
+    "mayon_A111F008_20260901_20260913": 0.0,
+    "mayon_D104F082_20260913_20260925": 0.0,
+    "mayon_A111F008_20260913_20260925": 0.0,
+    "mayon_A111F008_20260925_20261007": 0.0,
+    "mayon_D104F082_20261007_20261019": 0.0,
+    "mayon_A111F008_20261007_20261019": 0.0,
+    "mayon_D104F082_20261019_20261031": 0.0,
+    "mayon_A111F008_20261019_20261031": 0.0
+   }
+  },
+  {
+   "town_id": "mayon_polangui",
+   "town_name": "Polangui",
+   "town_kind": "municipality",
+   "nearest_km_to_summit": 14.58,
+   "checked_share": 0.0,
+   "channel_names": [],
+   "flagged_by_pass": {
+    "mayon_A111F008_20260621_20260703": 0.0,
+    "mayon_A111F008_20260703_20260715": 0.0,
+    "mayon_A111F008_20260715_20260727": 0.0,
+    "mayon_A111F008_20260727_20260820": 0.0,
+    "mayon_A111F008_20260820_20260901": 0.0,
+    "mayon_A111F008_20260901_20260913": 0.0,
+    "mayon_D104F082_20260913_20260925": 0.0,
+    "mayon_A111F008_20260913_20260925": 0.0,
+    "mayon_A111F008_20260925_20261007": 0.0,
+    "mayon_D104F082_20261007_20261019": 0.0,
+    "mayon_A111F008_20261007_20261019": 0.0,
+    "mayon_D104F082_20261019_20261031": 0.0,
+    "mayon_A111F008_20261019_20261031": 0.0
+   }
+  }
+ ],
+ "meta": {
+  "generated_at": "2026-11-14T18:54:26Z",
+  "passes": [
+   {
+    "pair_id": "mayon_A111F008_20260621_20260703",
+    "label": "Jun 21 – Jul 3, 2026",
+    "before": "2026-06-21T21:13:23Z",
+    "after": "2026-07-03T21:13:22Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": false,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:25Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20260703_20260715",
+    "label": "Jul 3 – Jul 15, 2026",
+    "before": "2026-07-03T21:13:22Z",
+    "after": "2026-07-15T21:13:21Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": false,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:25Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20260715_20260727",
+    "label": "Jul 15 – Jul 27, 2026",
+    "before": "2026-07-15T21:13:21Z",
+    "after": "2026-07-27T21:13:21Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": true,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:25Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20260727_20260820",
+    "label": "Jul 27 – Aug 20, 2026",
+    "before": "2026-07-27T21:13:21Z",
+    "after": "2026-08-20T21:13:19Z",
+    "days": 24,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": false,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:25Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20260820_20260901",
+    "label": "Aug 20 – Sep 1, 2026",
+    "before": "2026-08-20T21:13:19Z",
+    "after": "2026-09-01T21:13:19Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": false,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:25Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20260901_20260913",
+    "label": "Sep 1 – Sep 13, 2026",
+    "before": "2026-09-01T21:13:19Z",
+    "after": "2026-09-13T21:13:19Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": true,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:25Z"
+   },
+   {
+    "pair_id": "mayon_D104F082_20260913_20260925",
+    "label": "Sep 13 – Sep 25, 2026",
+    "before": "2026-09-13T10:16:11Z",
+    "after": "2026-09-25T10:16:11Z",
+    "days": 12,
+    "track": 104,
+    "orbit_direction": "descending",
+    "coherence_used": true,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:26Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20260913_20260925",
+    "label": "Sep 13 – Sep 25, 2026",
+    "before": "2026-09-13T21:13:19Z",
+    "after": "2026-09-25T21:13:19Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": true,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:25Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20260925_20261007",
+    "label": "Sep 25 – Oct 7, 2026",
+    "before": "2026-09-25T21:13:19Z",
+    "after": "2026-10-07T21:13:19Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": true,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:26Z"
+   },
+   {
+    "pair_id": "mayon_D104F082_20261007_20261019",
+    "label": "Oct 7 – Oct 19, 2026",
+    "before": "2026-10-07T10:16:11Z",
+    "after": "2026-10-19T10:16:12Z",
+    "days": 12,
+    "track": 104,
+    "orbit_direction": "descending",
+    "coherence_used": true,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:26Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20261007_20261019",
+    "label": "Oct 7 – Oct 19, 2026",
+    "before": "2026-10-07T21:13:19Z",
+    "after": "2026-10-19T21:13:19Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": true,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:26Z"
+   },
+   {
+    "pair_id": "mayon_D104F082_20261019_20261031",
+    "label": "Oct 19 – Oct 31, 2026",
+    "before": "2026-10-19T10:16:12Z",
+    "after": "2026-10-31T10:16:12Z",
+    "days": 12,
+    "track": 104,
+    "orbit_direction": "descending",
+    "coherence_used": false,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:26Z"
+   },
+   {
+    "pair_id": "mayon_A111F008_20261019_20261031",
+    "label": "Oct 19 – Oct 31, 2026",
+    "before": "2026-10-19T21:13:19Z",
+    "after": "2026-10-31T21:13:20Z",
+    "days": 12,
+    "track": 111,
+    "orbit_direction": "ascending",
+    "coherence_used": false,
+    "reviewed_by": "Rody Baldwin",
+    "reviewed_at": "2026-11-14T18:54:26Z"
+   }
+  ],
+  "schema_version": "1.0"
+ }
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mayon Radar Watch · 3D view</title>
+  <link rel="icon" href="img/mrw-logo.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="vendor/maplibre-gl-4.7.1/maplibre-gl.css">
+  <link rel="stylesheet" href="3d/3d.css?v=8920186b5b">
+</head>
+<body>
+  <!-- Task T-149: the 3D view (F-25, SCR-15). Its text comes from 3d/strings-3d.js and js/strings.js. -->
+  <!-- FR-108: Panama is a test of the method, as on the 2D map. Its back link opens Mayon in 3D. -->
+  <div id="test-banner" class="test-banner" hidden>
+    <span data-text="testBanner"></span>
+    <a class="test-back" href="3d.html" data-text="testBack"></a>
+  </div>
+  <header class="bar">
+    <span class="brand">
+      <img class="brand-mark" src="img/mrw-logo.svg" alt="" width="24" height="24">
+      <span class="brand-name" data-text="appName"></span>
+    </span>
+    <h1 class="title"><span id="site-name"></span> <span class="view-name" data-text="viewName"></span></h1>
+    <p id="disclaimer-tag" class="disclaimer-tag" data-text="disclaimerShort"></p>
+    <a class="back-link to-2d" href="./" data-text="backTo2d"></a>
+  </header>
+
+  <main class="map-area">
+    <div id="map" role="region" data-label="mapLabel"></div>
+    <p id="loading" class="notice" role="status" data-text="loadingRadar"></p>
+
+    <div id="problem" class="notice problem" role="alert" hidden>
+      <p id="problem-text"></p>
+      <a class="to-2d" href="./" data-text="open2d"></a>
+    </div>
+
+    <section class="card pass-card" aria-labelledby="pair-label">
+      <div class="pass-row">
+        <button id="previous" class="icon-button" type="button" data-label="previous"><span aria-hidden="true">‹</span></button>
+        <label class="hidden-text" for="pair-list" data-text="passList"></label>
+        <select id="pair-list" class="pair-list"></select>
+        <button id="next" class="icon-button" type="button" data-label="next"><span aria-hidden="true">›</span></button>
+      </div>
+      <p id="pair-label" class="pair-label"></p>
+      <p id="pair-sub" class="pair-sub"></p>
+      <p id="pair-detail" class="hidden-text"></p>
+      <p id="pair-events" class="hidden-text"></p>
+      <p id="pair-gap" class="pair-gap"></p>
+      <p id="pair-message" class="pair-message" role="status"></p>
+      <button id="retry" class="text-button" type="button" data-text="retry" hidden></button>
+      <p id="pair-image-alt" class="hidden-text"></p>
+      <p class="help-line" data-text="dragHelp"></p>
+      <p class="help-line" data-text="heightNote"></p>
+    </section>
+
+    <div class="card controls" role="group" data-label="controlsLabel">
+      <div class="basemap" role="group" data-label="basemapLabel">
+        <button id="basemap-relief" class="segment" type="button" data-text="basemapRelief" aria-pressed="true"></button>
+        <button id="basemap-satellite" class="segment" type="button" data-text="basemapSatellite" aria-pressed="false"></button>
+      </div>
+      <button id="reset-view" class="text-button" type="button" data-text="resetView"></button>
+      <button id="orbit" class="text-button" type="button" data-text="orbit" aria-pressed="false"></button>
+      <p id="orbit-note" class="help-line" data-text="orbitStepNote" hidden></p>
+    </div>
+
+    <p id="product-label" class="maplibregl-ctrl product-label"></p>
+  </main>
+
+  <script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "./js/channels.js": "./js/channels.js?v=fd204642b8",
+    "./js/compare.js": "./js/compare.js?v=992505293c",
+    "./js/data.js": "./js/data.js?v=4dcc91f5d5",
+    "./js/drawer.js": "./js/drawer.js?v=d217e9130d",
+    "./js/histogram.js": "./js/histogram.js?v=41b9d489b4",
+    "./js/layers.js": "./js/layers.js?v=01983b4fd6",
+    "./js/main.js": "./js/main.js?v=ec93becf2a",
+    "./js/map.js": "./js/map.js?v=67a4a7766b",
+    "./js/marks.js": "./js/marks.js?v=954090a74a",
+    "./js/panels.js": "./js/panels.js?v=a411e4573d",
+    "./js/popover.js": "./js/popover.js?v=120be6e61a",
+    "./js/readout.js": "./js/readout.js?v=d38c3583a3",
+    "./js/search.js": "./js/search.js?v=49363b9f38",
+    "./js/strings.js": "./js/strings.js?v=51920b0314",
+    "./js/timeline.js": "./js/timeline.js?v=69bf6661ab",
+    "./3d/3d.js": "./3d/3d.js?v=aee4bc2e9a",
+    "./3d/strings-3d.js": "./3d/strings-3d.js?v=4d5aaa7144"
+  }
+}
+  </script>
+  <script type="module" src="3d/3d.js?v=aee4bc2e9a"></script>
+</body>
+</html>

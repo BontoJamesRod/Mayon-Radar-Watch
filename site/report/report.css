@@ -1,0 +1,117 @@
+/* Town reports in formal document style: A4, 1-inch margins, Garamond throughout, black and white.
+   The only colour in the whole report is the flagged marks inside the figures. */
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-style: normal; font-display: swap; src: url("../vendor/eb-garamond-5.3.0/eb-garamond-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-style: italic; font-display: swap; src: url("../vendor/eb-garamond-5.3.0/eb-garamond-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 600; font-style: normal; font-display: swap; src: url("../vendor/eb-garamond-5.3.0/eb-garamond-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 700; font-style: normal; font-display: swap; src: url("../vendor/eb-garamond-5.3.0/eb-garamond-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 700; font-style: italic; font-display: swap; src: url("../vendor/eb-garamond-5.3.0/eb-garamond-latin-700-italic.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-display: swap; src: url("../vendor/ibm-plex-5.3.0/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 700; font-display: swap; src: url("../vendor/ibm-plex-5.3.0/ibm-plex-sans-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --doc: "EB Garamond", Garamond, "Times New Roman", serif;
+  --ui: "IBM Plex Sans", Arial, sans-serif; /* screen toolbar only */
+  --grey: #444;
+}
+
+* { box-sizing: border-box; }
+/* A hidden control stays hidden, even when a style below gives it a display (the data link on the list). */
+[hidden] { display: none !important; }
+html { background: #e9e9e9; }
+body { margin: 0; color: #000; font-family: var(--doc); font-size: 12pt; line-height: 1.3; }
+
+/* ---------- screen toolbar (not printed) ---------- */
+.toolbar { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 10px 16px; background: #fff; border-bottom: 1px solid #bbb; font-family: var(--ui); font-size: 10.5pt; }
+.brand { display: flex; gap: 8px; align-items: center; font-weight: 700; color: #000; text-decoration: none; margin-right: auto; }
+.town-pick { display: flex; gap: 6px; align-items: center; font-weight: 700; }
+select, button, .button { font: inherit; min-height: 44px; padding: 8px 14px; border-radius: 6px; border: 1px solid #888; background: #fff; color: #000; text-decoration: none; display: inline-flex; align-items: center; cursor: pointer; }
+button.primary { background: #000; color: #fff; border-color: #000; font-weight: 700; }
+.toolbar-note { margin: 8px auto 0; max-width: 210mm; color: var(--grey); font: 9.5pt var(--ui); padding: 0 8px; }
+.loading { text-align: center; padding: 40px; font-family: var(--ui); }
+
+/* ---------- the document ---------- */
+.paper { width: 210mm; margin: 14px auto 40px; padding: 25.4mm; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.15); }
+.paper p { margin: 0 0 9pt; text-align: justify; hyphens: auto; text-indent: 0.5in; }
+.paper p.flush, .paper .abstract p, .paper figcaption, .paper .table-note, .paper .refs p, .paper .notice p { text-indent: 0; }
+.paper .refs p { text-indent: -0.5in; }
+.appendix table + p { margin-top: 10pt; }
+
+/* Letterhead: centred, black, a thin rule under it */
+.letterhead { text-align: center; line-height: 1.25; border-bottom: 0.75pt solid #000; padding-bottom: 6pt; margin-bottom: 16pt; }
+.letterhead .lh-1 { font-size: 11pt; }
+.letterhead .lh-2 { font-size: 14pt; font-weight: 700; }
+.letterhead .lh-3 { font-size: 11pt; font-weight: 700; }
+.letterhead .lh-4 { font-size: 10.5pt; font-style: italic; }
+
+.paper .doc-title { text-align: center; font-size: 14pt; font-weight: 700; text-transform: uppercase; margin: 0 0 2pt; letter-spacing: .02em; }
+.paper .doc-sub { text-align: center; font-size: 12pt; margin: 0 0 12pt; }
+.notice-line { text-align: center; font-weight: 700; font-size: 11pt; border: 0.75pt solid #000; padding: 3pt 8pt; margin: 0 auto 14pt; width: fit-content; }
+
+/* Basic information: label, colon, bold value, like a formal proposal */
+.basic { display: grid; grid-template-columns: 16pt 52mm 1fr; column-gap: 4pt; row-gap: 2pt; margin: 4pt 0 10pt 0.35in; }
+.basic .v { font-weight: 700; }
+.basic .v::before { content: ": "; }
+
+/* Headings: Roman numerals, bold, capitals (main); lettered, bold (sub) */
+h2 { display: flex; gap: 0; font-size: 12pt; font-weight: 700; text-transform: uppercase; margin: 16pt 0 8pt; break-after: avoid; page-break-after: avoid; clear: both; }
+h2 .no { display: inline-block; width: 0.5in; text-align: right; padding-right: 10pt; flex: none; }
+h2.plain { justify-content: center; }
+h3 { font-size: 12pt; font-weight: 700; margin: 10pt 0 5pt 0.35in; break-after: avoid; page-break-after: avoid; }
+h3 .no { display: inline-block; width: 16pt; }
+
+/* Abstract */
+.abstract { margin: 0 0.35in 14pt; }
+.abstract p { text-align: justify; margin-bottom: 6pt; }
+.abstract .label { font-weight: 700; font-style: italic; }
+
+/* Figures and tables: never split; table captions above, figure captions below */
+figure { margin: 10pt 0 14pt; break-inside: avoid; page-break-inside: avoid; }
+figure img { display: block; max-width: 100%; margin: 0 auto; }
+figure.map img { max-height: 185mm; }
+figure.locator { float: right; width: 58mm; margin: 0 0 6pt 12pt; }
+figure.locator img { width: 100%; }
+figcaption { font-size: 10.5pt; line-height: 1.25; margin-top: 5pt; text-align: justify; }
+.cap-label { font-weight: 700; }
+.table-wrap { margin: 10pt 0 14pt; break-inside: avoid; page-break-inside: avoid; }
+.table-caption { font-size: 11pt; margin-bottom: 4pt; text-align: center; }
+.table-caption .cap-label { margin-right: 4pt; }
+.table-caption .cap-title { font-style: italic; }
+
+/* Tables: full black grid, bold centred header, like a formal document */
+table { width: 100%; border-collapse: collapse; font-size: 10.5pt; line-height: 1.2; font-variant-numeric: lining-nums tabular-nums; }
+th, td { border: 0.75pt solid #000; padding: 3pt 5pt; vertical-align: middle; }
+thead th { font-weight: 700; text-align: center; }
+td { text-align: left; }
+td.n, th.n { text-align: center; }
+tr.after td { font-weight: 700; }
+tr.band td { font-weight: 700; text-align: center; text-transform: uppercase; }
+.table-note { font-size: 10pt; line-height: 1.25; margin-top: 4pt; }
+.chart svg { width: 100%; height: auto; display: block; }
+
+/* Public notice: plain black frame */
+.notice { border: 1pt solid #000; padding: 8pt 12pt; margin: 10pt 0 14pt; break-inside: avoid; }
+.notice .head { font-weight: 700; text-transform: uppercase; text-align: center; margin-bottom: 4pt; }
+.notice ul { margin: 0; }
+
+ul, ol { margin: 0 0 9pt 0.35in; padding-left: 18pt; }
+li { margin-bottom: 3pt; text-align: justify; }
+.refs p { padding-left: 0.5in; text-indent: -0.5in; margin-bottom: 6pt; text-align: left; }
+.appendix { break-before: page; page-break-before: always; }
+.mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 7.5pt; word-break: break-all; }
+a { color: #000; text-decoration: none; }
+
+/* Town list */
+.list .doc-title { margin-top: 4pt; }
+
+/* ---------- A4 print: 1-inch margins, running head, page numbers ---------- */
+@page { size: A4; margin: 25.4mm; }
+@media print {
+  html, body { background: #fff; }
+  .no-print { display: none !important; }
+  .paper { width: auto; margin: 0; padding: 0; box-shadow: none; }
+}
+@media screen and (max-width: 820px) {
+  .paper { width: auto; margin: 8px; padding: 18px; }
+  .basic { grid-template-columns: 16pt 1fr; margin-left: 0; }
+  .basic .v { grid-column: 2; }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Town report · Mayon Radar Watch</title>
+  <link rel="icon" href="img/mrw-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="report/report.css?v=caebf02744">
+</head>
+<body>
+  <!-- Town reports (prototype): one printable summary per city or municipality.
+       The numbers come from report/data/<site>/, written by pipeline/mrw/town_reports.py.
+       "Save as PDF" uses the browser's own print dialog, so there is no server. -->
+  <header class="toolbar no-print">
+    <a class="brand" href="./"><img src="img/mrw-logo.svg" alt="" width="22" height="22"> Mayon Radar Watch</a>
+    <label class="town-pick">Town
+      <select id="town-select" aria-label="Choose a town"></select>
+    </label>
+    <!-- T-160: only passes whose data sheet the owner approved (FR-118). -->
+    <label class="town-pick">Pass
+      <select id="pass-select" aria-label="Choose a radar pass"></select>
+    </label>
+    <button id="print-button" type="button" class="primary">Save as PDF</button>
+    <a id="bundle-link" class="button" href="#" download>Download data (ZIP)</a>
+    <a class="button" href="./">← Back to map</a>
+  </header>
+  <p class="toolbar-note no-print">To save a PDF, press <b>Save as PDF</b> and choose "Save as PDF" as the printer. Paper: A4, margins: default.</p>
+  <main id="report" aria-live="polite"><p class="loading">Loading the report…</p></main>
+  <script src="report/report.js?v=85a21b63e8"></script>
+</body>
+</html>

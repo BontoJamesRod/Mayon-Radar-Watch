@@ -1,0 +1,151 @@
+{
+ "site_id": "mayon",
+ "pair_id": "mayon_A111F008_20260621_20260703",
+ "label": "Jun 21 – Jul 3, 2026",
+ "before": "2026-06-21T21:13:23Z",
+ "after": "2026-07-03T21:13:22Z",
+ "days": 12,
+ "track": 111,
+ "orbit_direction": "ascending",
+ "coherence_used": false,
+ "granules": [
+  "NISAR_L2_PR_GCOV_023_111_A_008_4005_DHDH_A_20260621T211323_20260621T211357_P05023_N_F_J_001",
+  "NISAR_L2_PR_GCOV_024_111_A_008_4005_DHDH_A_20260703T211322_20260703T211356_P05023_N_F_J_001"
+ ],
+ "whole_site_km2": 2.38,
+ "towns": [
+  {
+   "town_id": "mayon_bacacay",
+   "town_name": "Bacacay",
+   "possible_km2": 0.043,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.043,
+   "no_data_km2": 0.0,
+   "checked_share": 0.387
+  },
+  {
+   "town_id": "mayon_camalig",
+   "town_name": "Camalig",
+   "possible_km2": 0.393,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.393,
+   "no_data_km2": 0.005,
+   "checked_share": 0.576
+  },
+  {
+   "town_id": "mayon_daraga",
+   "town_name": "Daraga",
+   "possible_km2": 0.341,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.341,
+   "no_data_km2": 0.002,
+   "checked_share": 0.584
+  },
+  {
+   "town_id": "mayon_guinobatan",
+   "town_name": "Guinobatan",
+   "possible_km2": 0.656,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.656,
+   "no_data_km2": 0.003,
+   "checked_share": 0.432
+  },
+  {
+   "town_id": "mayon_legazpi_city",
+   "town_name": "Legazpi City",
+   "possible_km2": 0.149,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.149,
+   "no_data_km2": 0.0,
+   "checked_share": 0.613
+  },
+  {
+   "town_id": "mayon_ligao_city",
+   "town_name": "Ligao City",
+   "possible_km2": 0.358,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.358,
+   "no_data_km2": 0.075,
+   "checked_share": 0.449
+  },
+  {
+   "town_id": "mayon_malilipot",
+   "town_name": "Malilipot",
+   "possible_km2": 0.095,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.095,
+   "no_data_km2": 0.002,
+   "checked_share": 0.954
+  },
+  {
+   "town_id": "mayon_malinao",
+   "town_name": "Malinao",
+   "possible_km2": 0.001,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.001,
+   "no_data_km2": 0.0,
+   "checked_share": 0.025
+  },
+  {
+   "town_id": "mayon_oas",
+   "town_name": "Oas",
+   "possible_km2": 0.0,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.0,
+   "no_data_km2": 0.069,
+   "checked_share": 0.0
+  },
+  {
+   "town_id": "mayon_polangui",
+   "town_name": "Polangui",
+   "possible_km2": 0.0,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.0,
+   "no_data_km2": 0.0,
+   "checked_share": 0.0
+  },
+  {
+   "town_id": "mayon_santo_domingo",
+   "town_name": "Santo Domingo",
+   "possible_km2": 0.202,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.202,
+   "no_data_km2": 0.0,
+   "checked_share": 0.833
+  },
+  {
+   "town_id": "mayon_tabaco_city",
+   "town_name": "Tabaco City",
+   "possible_km2": 0.153,
+   "likely_km2": 0.0,
+   "flagged_km2": 0.153,
+   "no_data_km2": 0.026,
+   "checked_share": 0.622
+  }
+ ],
+ "channel_rows": [
+  {
+   "channel_id": "mayon_basud",
+   "flagged_km2": 0.011,
+   "checked_km2": 3.993
+  },
+  {
+   "channel_id": "mayon_lidong",
+   "flagged_km2": 0.002,
+   "checked_km2": 3.555
+  },
+  {
+   "channel_id": "mayon_miisi",
+   "flagged_km2": 0.053,
+   "checked_km2": 3.747
+  },
+  {
+   "channel_id": "mayon_padang",
+   "flagged_km2": 0.027,
+   "checked_km2": 2.505
+  }
+ ],
+ "status": "approved",
+ "reviewed_by": "Rody Baldwin",
+ "reviewed_at": "2026-11-14T18:54:25Z"
+}
